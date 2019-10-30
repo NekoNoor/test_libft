@@ -6,19 +6,19 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/10/30 12:30:39 by nschat        ########   odam.nl          #
+#    Updated: 2019/10/30 13:33:57 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-LIB = libft/libft.a
-
 CC = clang
-CFLAGS = -g -Wall -Wextra -Werror -Iinclude -I$(dir $(LIB))include
+CFLAGS = -g -Wall -Wextra -Werror -Iinclude -Ilibft/include
 
-SRC = ft_main.c
+SRC = main.c test_str.c test_mem.c test_misc.c
 
 ODIR = obj
 OBJ = $(addprefix $(ODIR)/,$(SRC:.c=.o))
+
+LIB = libft/libft.a
 
 NAME = test_libft
 
@@ -42,7 +42,6 @@ $(ODIR)/%.o: %.c $(ODIR)
 
 clean:
 	$(RM) -r $(ODIR)
-	$(MAKE) -C $(dir $(LIB)) clean
 
 fclean: clean
 	$(RM) $(NAME)

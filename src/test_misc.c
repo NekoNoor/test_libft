@@ -1,16 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_header.h                                        :+:    :+:            */
+/*   test_misc.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/30 12:28:21 by nschat        #+#    #+#                 */
-/*   Updated: 2019/10/30 12:32:09 by nschat        ########   odam.nl         */
+/*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
+/*   Updated: 2019/10/30 13:12:14 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_HEADER_H
-# define FT_HEADER_H
-
-#endif
+#include "common.h"
