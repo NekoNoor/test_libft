@@ -6,7 +6,7 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/10/30 12:22:15 by nschat        ########   odam.nl          #
+#    Updated: 2019/10/30 12:30:39 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ LIB = libft/libft.a
 CC = clang
 CFLAGS = -g -Wall -Wextra -Werror -Iinclude -I$(dir $(LIB))include
 
-SRC = main.c
+SRC = ft_main.c
 
 ODIR = obj
 OBJ = $(addprefix $(ODIR)/,$(SRC:.c=.o))
