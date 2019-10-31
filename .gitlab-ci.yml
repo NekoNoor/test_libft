@@ -2,11 +2,12 @@ image: "ubuntu:19.04"
 
 variables:
     GIT_SUBMODULE_STRATEGY: recursive
+    BREW: criterion-v2.3.3
 
 before_script:
-    - apt update -qq && apt install -y -qq clang build-essential software-properties-common
-    - add-apt-repository ppa:snaipewastaken/ppa -y
-    - apt update -qq && apt install -y -qq criterion-dev
+    - apt update -qq && apt install -y -qq clang build-essential
+    - wget https://github.com/Snaipe/Criterion/releases/download/v2.3.3/criterion-v2.3.3-linux-x86_64.tar.bz2
+    - tar -xzvf criterion-v2.3.3-linux-x86_64.tar.bz2
     - clang --version
     - which clang
 
