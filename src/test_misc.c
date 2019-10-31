@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/01 00:36:14 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/01 00:38:31 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ Test(misc, ft_isascii)
 	c = -300;
 	while (c <= 300)
 	{
-		cr_expect_eq(ft_isprint(c), isprint(c));
+		cr_expect_eq(ft_isascii(c), isascii(c));
 		c++;
 	}
 }
