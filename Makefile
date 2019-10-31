@@ -6,7 +6,7 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/10/31 18:52:20 by nschat        ########   odam.nl          #
+#    Updated: 2019/10/31 21:13:58 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror -I include -I libft/include \
 		 -isystem ${BREW}/include
 LDFLAGS = -L ${BREW}/lib -lcriterion
-ARGS = -g
+ARGS = -g -fprofile-instr-generate -fcoverage-mapping
 
 SRC = test_mem.c test_misc.c test_str.c
 
