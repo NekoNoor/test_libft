@@ -2,6 +2,7 @@ image: "ubuntu:19.04"
 
 variables:
     GIT_SUBMODULE_STRATEGY: recursive
+    LD_LIBRARY_PATH: criterion-v2.3.3/lib
     BREW: criterion-v2.3.3
 
 before_script:
