@@ -15,7 +15,7 @@ before_script:
 cache:
     paths:
         - obj/*.o
-        - obj/libft/*.o
+        - libft/obj/*.o
 
 build:
     stage: build
