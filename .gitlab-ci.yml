@@ -5,7 +5,7 @@ variables:
     BREW: criterion-v2.3.3
 
 before_script:
-    - apt update -qq && apt install -y -qq clang build-essential
+    - apt update -qq && apt install -y -qq clang build-essential wget
     - wget https://github.com/Snaipe/Criterion/releases/download/v2.3.3/criterion-v2.3.3-linux-x86_64.tar.bz2
     - tar -xzvf criterion-v2.3.3-linux-x86_64.tar.bz2
     - clang --version
