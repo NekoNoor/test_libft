@@ -1,0 +1,22 @@
+image: "ubuntu:19.04"
+
+variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+
+before_script:
+    - apt-get update -qq && apt-get install -y -qq clang
+    - clang --version
+    - which clang
+
+cache:
+    paths:
+        - obj/*.o
+        - obj/libft/*.o
+
+build:
+    stage: build
+    script:
+        - make test
+    artifacts:
+        paths:
+            - test_libft
