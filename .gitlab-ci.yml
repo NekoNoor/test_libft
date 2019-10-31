@@ -4,7 +4,7 @@ variables:
     GIT_SUBMODULE_STRATEGY: recursive
 
 before_script:
-    - apt-get update -qq && apt-get install -y -qq clang
+    - apt update -qq && apt install -y -qq git clang openssh-client
     - clang --version
     - which clang
 
