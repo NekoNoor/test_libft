@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/01 00:27:39 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/01 00:36:14 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ Test(misc, ft_isalpha)
 {
 	int	c;
 
-	c = -12894;
-	while (c <= 1920374)
+	c = -300;
+	while (c <= 300)
 	{
 		cr_expect_eq(ft_isalpha(c), isalpha(c));
 		c++;
@@ -47,8 +47,8 @@ Test(misc, ft_isdigit)
 {
 	int	c;
 
-	c = -12894;
-	while (c <= 1920374)
+	c = -300;
+	while (c <= 300)
 	{
 		cr_expect_eq(ft_isdigit(c), isdigit(c));
 		c++;
@@ -59,8 +59,8 @@ Test(misc, ft_isalnum)
 {
 	int	c;
 
-	c = -12894;
-	while (c <= 1920374)
+	c = -300;
+	while (c <= 300)
 	{
 		cr_expect_eq(ft_isalnum(c), isalnum(c));
 		c++;
@@ -71,8 +71,8 @@ Test(misc, ft_isascii)
 {
 	int	c;
 
-	c = -12894;
-	while (c <= 1920374)
+	c = -300;
+	while (c <= 300)
 	{
 		cr_expect_eq(ft_isprint(c), isprint(c));
 		c++;
@@ -83,8 +83,8 @@ Test(misc, ft_isprint)
 {
 	int	c;
 
-	c = -12894;
-	while (c <= 1920374)
+	c = -300;
+	while (c <= 300)
 	{
 		cr_expect_eq(ft_isprint(c), isprint(c));
 		c++;
@@ -95,8 +95,8 @@ Test(misc, ft_toupper)
 {
 	int	c;
 
-	c = -12894;
-	while (c <= 1920374)
+	c = -300;
+	while (c <= 300)
 	{
 		cr_expect_eq(ft_toupper(c), toupper(c));
 		c++;
@@ -107,8 +107,8 @@ Test(misc, ft_tolower)
 {
 	int	c;
 
-	c = -12894;
-	while (c <= 1920374)
+	c = -300;
+	while (c <= 300)
 	{
 		cr_expect_eq(ft_tolower(c), tolower(c));
 		c++;
