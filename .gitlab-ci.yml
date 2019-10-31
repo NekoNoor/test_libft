@@ -4,8 +4,9 @@ variables:
     GIT_SUBMODULE_STRATEGY: recursive
 
 before_script:
+    - apt update -qq && apt install -y -qq clang build-essential software-properties-common
     - add-apt-repository ppa:snaipewastaken/ppa -y
-    - apt update -qq && apt install -y -qq clang build-essential criterion-dev
+    - apt update -qq && apt install -y -qq criterion-dev
     - clang --version
     - which clang
 
