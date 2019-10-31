@@ -6,14 +6,15 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/10/31 17:06:52 by nschat        ########   odam.nl          #
+#    Updated: 2019/10/31 18:52:20 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
-CFLAGS = -g -Wall -Wextra -Werror -I include -I libft/include \
+CFLAGS = -Wall -Wextra -Werror -I include -I libft/include \
 		 -isystem ${BREW}/include
 LDFLAGS = -L ${BREW}/lib -lcriterion
+ARGS = -g
 
 SRC = test_mem.c test_misc.c test_str.c
 
@@ -31,14 +32,14 @@ vpath %.c src
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+	$(CC) $(ARGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 $(LIB):
-	$(MAKE) -C $(dir $(LIB))
+	$(MAKE) ARGS=$(ARGS) -C $(dir $(LIB))
 
 $(ODIR)/%.o: %.c
 	@mkdir -p $(ODIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(ARGS) $(CFLAGS) -c $< -o $@
 
 test: $(NAME)
 	./$(NAME)
