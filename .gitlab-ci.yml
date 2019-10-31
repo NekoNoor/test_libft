@@ -20,7 +20,12 @@ cache:
 build:
     stage: build
     script:
-        - make test
+        - make
     artifacts:
         paths:
             - test_libft
+
+test:
+    stage: test
+    script:
+        - make test
