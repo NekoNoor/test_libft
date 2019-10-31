@@ -6,12 +6,13 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/10/31 23:22:33 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/01 00:27:39 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_libft.h"
 #include <criterion/criterion.h>
+#include <ctype.h>
 
 Test(misc, ft_atoi)
 {
