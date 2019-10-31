@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/01 00:41:12 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/01 00:54:24 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Test(misc, ft_isalpha)
 	c = -300;
 	while (c <= 300)
 	{
-		cr_expect_eq(ft_isalpha(c), isalpha(c));
+		cr_expect_eq(ft_isalpha(c), isalpha(c), "%i, %c", c, c);
 		c++;
 	}
 }
@@ -50,7 +50,7 @@ Test(misc, ft_isdigit)
 	c = -300;
 	while (c <= 300)
 	{
-		cr_expect_eq(ft_isdigit(c), isdigit(c));
+		cr_expect_eq(ft_isdigit(c), isdigit(c), "%i, %c", c, c);
 		c++;
 	}
 }
@@ -62,7 +62,7 @@ Test(misc, ft_isalnum)
 	c = -300;
 	while (c <= 300)
 	{
-		cr_expect_eq(ft_isalnum(c), isalnum(c));
+		cr_expect_eq(ft_isalnum(c), isalnum(c), "%i, %c", c, c);
 		c++;
 	}
 }
@@ -74,7 +74,7 @@ Test(misc, ft_isascii)
 	c = -300;
 	while (c <= 300)
 	{
-		cr_expect_eq(ft_isascii(c), isascii(c));
+		cr_expect_eq(ft_isascii(c), isascii(c), "%i, %c", c, c);
 		c++;
 	}
 }
@@ -86,7 +86,7 @@ Test(misc, ft_isprint)
 	c = -300;
 	while (c <= 300)
 	{
-		cr_expect_eq(ft_isprint(c), isprint(c));
+		cr_expect_eq(ft_isprint(c), isprint(c), "%i, %c", c, c);
 		c++;
 	}
 }
@@ -98,7 +98,7 @@ Test(misc, ft_toupper)
 	c = -300;
 	while (c <= 300)
 	{
-		cr_expect_eq(ft_toupper(c), toupper(c));
+		cr_expect_eq(ft_toupper(c), toupper(c), "%i, %c, %c", c, c, toupper(c));
 		c++;
 	}
 }
@@ -110,7 +110,7 @@ Test(misc, ft_tolower)
 	c = -300;
 	while (c <= 300)
 	{
-		cr_expect_eq(ft_tolower(c), tolower(c));
+		cr_expect_eq(ft_tolower(c), tolower(c), "%i, %c, %c", c, c, tolower(c));
 		c++;
 	}
 }
