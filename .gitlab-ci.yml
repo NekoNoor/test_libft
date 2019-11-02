@@ -24,11 +24,3 @@ build:
     artifacts:
         paths:
             - test_libft
-
-test:
-    stage: test
-    script:
-        - make test
-    artifacts:
-        paths:
-            - test_libft
