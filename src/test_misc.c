@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/01 00:54:24 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/02 19:53:51 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ Test(misc, ft_atoi)
 	cr_expect_eq(ft_atoi("14asd"), atoi("14asd"));
 	cr_expect_eq(ft_atoi("2147483647"), atoi("2147483647"));
 	cr_expect_eq(ft_atoi("-2147483648"), atoi("-2147483648"));
+	cr_expect_eq(ft_atoi("-214748364890"), atoi("-214748364890"));
+	cr_expect_eq(ft_atoi("214748364790"), atoi("214748364790"));
 	cr_expect_eq(ft_atoi("0"), atoi("0"));
 	cr_expect_eq(ft_atoi(""), atoi(""));
 	cr_expect_eq(ft_atoi("		14"), atoi("		14"));
