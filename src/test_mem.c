@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:11:32 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/01 00:34:33 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/02 20:17:03 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Test(mem, ft_memset)
 	char	a[] = "ajskdasjldk";
 
 	ft_memset(a, 'A', 8);
-	cr_expect_arr_eq(a, "AAAAAAAAldk", 12, "memset 8 bytes");
+	cr_expect_arr_eq(a, "AAAAAAAAldk", 12);
 }
 
 Test(mem, ft_bzero)
@@ -28,5 +28,5 @@ Test(mem, ft_bzero)
 
 	ft_bzero(a, 8);
 	bzero(b, 8);
-	cr_expect_arr_eq(a, b, 12, "compare to system bzero");
+	cr_expect_arr_eq(a, b, 12);
 }
