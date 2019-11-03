@@ -6,11 +6,11 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:11:48 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/02 20:10:37 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/03 20:45:21 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libft.h"
+#include "libft.h"
 #include <criterion/criterion.h>
 
 Test(str, ft_strlen)
