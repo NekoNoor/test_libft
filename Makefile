@@ -6,7 +6,7 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/03 16:08:47 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/03 18:09:08 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror -I include -I libft/include \
 LDFLAGS = -L ${BREW}/lib -lcriterion
 ARGS = -g -fprofile-instr-generate -fcoverage-mapping
 
-SRC = test_mem.c test_misc.c test_str.c test_part2.c
+SRC = test_mem.c test_misc.c test_str.c test_part2.c test_bonus.c
 
 ODIR = obj
 OBJ = $(addprefix $(ODIR)/,$(SRC:.c=.o))
