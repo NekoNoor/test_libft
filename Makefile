@@ -6,12 +6,12 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/02 19:31:37 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/03 15:31:23 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -I include -I libft/include \
+CFLAGS = -Wall -Wextra -Werror -I ./include -I ./libft/include \
 		 -isystem ${BREW}/include
 LDFLAGS = -L ${BREW}/lib -lcriterion
 ARGS = -g -fprofile-instr-generate -fcoverage-mapping
