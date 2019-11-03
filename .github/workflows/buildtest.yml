@@ -8,6 +8,9 @@ jobs:
         steps:
         - name: pull source
           uses: actions/checkout@v1
+          with:
+              submodules: recursive
+              token: ${{ secrets.GitHub_PAT }}
         - name: install criterion
           run: brew install snaipe/soft/criterion
         - name: run make
