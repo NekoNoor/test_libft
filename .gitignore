@@ -5,6 +5,9 @@
 !include/
 !include/*.h
 !Makefile
+!.github/
+!.github/workflows
+!.github/workflows/*.yml
 !.gitignore
 !.gitmodules
 !.gitlab-ci.yml
