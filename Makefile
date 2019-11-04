@@ -6,7 +6,7 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/04 13:32:03 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/04 13:34:44 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,6 @@ $(NAME): $(OBJ) $(LIB)
 
 $(LIB):
 	$(MAKE) "ARGS=$(ARGS)" -C $(dir $(LIB))
-
-bonus:
 	$(MAKE) bonus "ARGS=$(ARGS)" -C $(dir $(LIB))
 
 $(ODIR)/%.o: %.c

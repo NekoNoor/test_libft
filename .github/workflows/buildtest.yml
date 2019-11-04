@@ -16,10 +16,6 @@ jobs:
           run: make
           env:
               BREW: /usr/local/
-        - name: run make bonus
-          run: make bonus
-          env:
-              BREW: /usr/local/
         - name: run make test
           run: make test
           env:
