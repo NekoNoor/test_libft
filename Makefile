@@ -6,15 +6,14 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/05 21:35:11 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/05 21:50:20 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -I libft/include \
-		 -isystem ${BREW}/include
+CFLAGS = -g -fprofile-instr-generate -fcoverage-mapping -Wall -Wextra -Werror \
+		 -I libft/include -isystem ${BREW}/include
 LDFLAGS = -L ${BREW}/lib -lcriterion
-ARGS = -g -fprofile-instr-generate -fcoverage-mapping
 
 SRC = test_mem.c test_misc.c test_str.c test_part2.c test_bonus.c
 
@@ -47,21 +46,21 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
 	@printf "$(TIME) $(CPLUS) $(CGREEN)"
-	$(CC) $(ARGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 	@printf "$(CDEF)"
 
 $(LIB):
 	@printf "$(TIME) $(CNORM) $(CCYAN)"
-	$(MAKE) "ARGS=$(ARGS)" -C $(dir $(LIB))
+	$(MAKE) "DEBUG=true" -C $(dir $(LIB))
 	@printf "$(CDEF)"
 	@printf "$(TIME) $(CNORM) $(CCYAN)"
-	$(MAKE) bonus "ARGS=$(ARGS)" -C $(dir $(LIB))
+	$(MAKE) bonus "DEBUG=true" -C $(dir $(LIB))
 	@printf "$(CDEF)"
 
 $(ODIR)/%.o: %.c
 	@printf "$(TIME) $(CPLUS) $(CBLUE)"
 	@mkdir -p $(ODIR)
-	$(CC) $(ARGS) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(CDEF)"
 
 test: $(NAME)
