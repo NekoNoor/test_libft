@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/05 13:55:19 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/05 15:32:18 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ Test(bonus, ft_lstadd_back)
 void	del_f(void *content)
 {
 	ft_bzero(content, ft_strlen(content));
-	free(content);
 }
 
 Test(bonus, ft_lstdelone)
@@ -87,11 +86,37 @@ Test(bonus, ft_lstdelone)
 	str = ft_strdup("delme");
 	new = ft_lstnew(str);
 	ft_lstdelone(new, &del_f);
-	cr_expect_str_eq(str, "");
+	cr_expect_str_empty(str);
 }
 
 Test(bonus, ft_lstclear)
 {
+	t_list	*new;
+	char	**str_p;
+	int		i;
+
+	str_p = (char **)malloc(sizeof(char *) * 10);
+	i = 0;
+	while (i < 10)
+	{
+		str_p[i] = ft_strdup("delme");
+		i++;
+	}
+	new = NULL;
+	i = 0;
+	while (i < 10)
+	{
+		ft_lstadd_back(&new, ft_lstnew(str_p[i]));
+		i++;
+	}
+	ft_lstclear(&new, &del_f);
+	cr_expect_eq(new, NULL);
+	i = 0;
+	while (i < 10)
+	{
+		cr_expect_str_empty(str_p[i]);
+		i++;
+	}
 }
 
 Test(bonus, ft_lstiter)
