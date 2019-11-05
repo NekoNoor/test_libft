@@ -15,7 +15,7 @@
 
 Test(str, ft_strlen)
 {
-	cr_expect_eq(ft_strlen("hello world!"), 12);
+	cr_assert_eq(ft_strlen("hello world!"), 12);
 }
 
 Test(str, ft_strlcpy)
@@ -23,8 +23,8 @@ Test(str, ft_strlcpy)
 	char	src[] = "abcdefghijkl";
 	char	dst[256];
 
-	cr_expect_eq(ft_strlcpy(dst, src, 256), 12);
-	cr_expect_str_eq(dst, "abcdefghijkl", "%s", dst);
+	cr_assert_eq(ft_strlcpy(dst, src, 256), 12);
+	cr_assert_str_eq(dst, "abcdefghijkl", "%s", dst);
 }
 
 Test(str, ft_strlcat)

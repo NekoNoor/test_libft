@@ -17,8 +17,8 @@ Test(bonus, ft_lstnew)
 {
 	t_list	*lst;
 
-	cr_expect(lst = ft_lstnew(ft_strdup("nya")));
-	cr_expect_str_eq(lst->content, "nya");
+	cr_assert(lst = ft_lstnew(ft_strdup("nya")));
+	cr_assert_str_eq(lst->content, "nya");
 }
 
 Test(bonus, ft_lstadd_front)
@@ -27,9 +27,9 @@ Test(bonus, ft_lstadd_front)
 
 	new = ft_lstnew(ft_strdup("bla"));
 	ft_lstadd_front(&new, ft_lstnew(ft_strdup("owo")));
-	cr_expect_str_eq(new->content, "owo");
-	cr_expect_str_eq(new->next->content, "bla");
-	cr_expect_eq(new->next->next, NULL);
+	cr_assert_str_eq(new->content, "owo");
+	cr_assert_str_eq(new->next->content, "bla");
+	cr_assert_eq(new->next->next, NULL);
 }
 
 Test(bonus, ft_lstsize)
@@ -37,15 +37,15 @@ Test(bonus, ft_lstsize)
 	t_list	*new;
 
 	new = NULL;
-	cr_expect_eq(ft_lstsize(new), 0);
+	cr_assert_eq(ft_lstsize(new), 0);
 	new = ft_lstnew(ft_strdup("test"));
-	cr_expect_eq(ft_lstsize(new), 1);
+	cr_assert_eq(ft_lstsize(new), 1);
 	ft_lstadd_front(&new, ft_lstnew(ft_strdup("dup")));
-	cr_expect_eq(ft_lstsize(new), 2);
+	cr_assert_eq(ft_lstsize(new), 2);
 	ft_lstadd_front(&new, ft_lstnew(ft_strdup("bup")));
-	cr_expect_eq(ft_lstsize(new), 3);
+	cr_assert_eq(ft_lstsize(new), 3);
 	ft_lstadd_front(&new, ft_lstnew(ft_strdup("snup")));
-	cr_expect_eq(ft_lstsize(new), 4);
+	cr_assert_eq(ft_lstsize(new), 4);
 }
 
 Test(bonus, ft_lstlast)
@@ -53,11 +53,11 @@ Test(bonus, ft_lstlast)
 	t_list	*new;
 
 	new = ft_lstnew(ft_strdup("last"));
-	cr_expect_str_eq(ft_lstlast(new)->content, "last");
+	cr_assert_str_eq(ft_lstlast(new)->content, "last");
 	ft_lstadd_front(&new, ft_lstnew(ft_strdup("nyoom")));
-	cr_expect_str_eq(ft_lstlast(new)->content, "last");
+	cr_assert_str_eq(ft_lstlast(new)->content, "last");
 	ft_lstadd_front(&new, ft_lstnew(ft_strdup("weeew")));
-	cr_expect_str_eq(ft_lstlast(new)->content, "last");
+	cr_assert_str_eq(ft_lstlast(new)->content, "last");
 }
 
 Test(bonus, ft_lstadd_back)
@@ -66,11 +66,11 @@ Test(bonus, ft_lstadd_back)
 
 	new = ft_lstnew(ft_strdup("first"));
 	ft_lstadd_back(&new, ft_lstnew(ft_strdup("new")));
-	cr_expect_str_eq(ft_lstlast(new)->content, "new");
+	cr_assert_str_eq(ft_lstlast(new)->content, "new");
 	ft_lstadd_back(&new, ft_lstnew(ft_strdup("newer")));
-	cr_expect_str_eq(ft_lstlast(new)->content, "newer");
+	cr_assert_str_eq(ft_lstlast(new)->content, "newer");
 	ft_lstadd_back(&new, ft_lstnew(ft_strdup("newest")));
-	cr_expect_str_eq(ft_lstlast(new)->content, "newest");
+	cr_assert_str_eq(ft_lstlast(new)->content, "newest");
 }
 
 void	del_f(void *content)
@@ -86,7 +86,7 @@ Test(bonus, ft_lstdelone)
 	str = ft_strdup("delme");
 	new = ft_lstnew(str);
 	ft_lstdelone(new, &del_f);
-	cr_expect_str_empty(str);
+	cr_assert_str_empty(str);
 }
 
 Test(bonus, ft_lstclear)
@@ -110,11 +110,11 @@ Test(bonus, ft_lstclear)
 		i++;
 	}
 	ft_lstclear(&new, &del_f);
-	cr_expect_eq(new, NULL);
+	cr_assert_eq(new, NULL);
 	i = 0;
 	while (i < 10)
 	{
-		cr_expect_str_empty(str_p[i]);
+		cr_assert_str_empty(str_p[i]);
 		i++;
 	}
 }
