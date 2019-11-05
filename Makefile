@@ -6,7 +6,7 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/05 19:45:19 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/05 21:35:11 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,20 @@ LIB = libft/libft.a
 
 NAME = test_libft
 
+CRED=\x1b[31m
+CGREEN=\x1b[32m
+CYELLOW=\x1b[33m
+CBLUE=\x1b[34m
+CCYAN=\x1b[36m
+CDEFAULT=\x1b[39m
+CDEF=$(CDEFAULT)
+
+CMINUS=$(CRED)[-]$(CDEF)
+CPLUS=$(CGREEN)[+]$(CDEF)
+CNORM=$(CYELLOW)[~]$(CDEF)
+
+TIME=$(CCYAN)[$$(date +"%H:%M:%S")]$(CDEF)
+
 vpath %.c src
 
 .PHONY: clean fclean test
@@ -32,24 +46,43 @@ vpath %.c src
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
+	@printf "$(TIME) $(CPLUS) $(CGREEN)"
 	$(CC) $(ARGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
+	@printf "$(CDEF)"
 
 $(LIB):
+	@printf "$(TIME) $(CNORM) $(CCYAN)"
 	$(MAKE) "ARGS=$(ARGS)" -C $(dir $(LIB))
+	@printf "$(CDEF)"
+	@printf "$(TIME) $(CNORM) $(CCYAN)"
 	$(MAKE) bonus "ARGS=$(ARGS)" -C $(dir $(LIB))
+	@printf "$(CDEF)"
 
 $(ODIR)/%.o: %.c
+	@printf "$(TIME) $(CPLUS) $(CBLUE)"
 	@mkdir -p $(ODIR)
 	$(CC) $(ARGS) $(CFLAGS) -c $< -o $@
+	@printf "$(CDEF)"
 
 test: $(NAME)
+	@printf "$(TIME) $(CNORM) $(CCYAN)"
 	./$(NAME) --verbose
+	@printf "$(CDEF)"
 
 clean:
+	@printf "$(TIME) $(CMINUS) $(CRED)"
 	$(RM) -r $(ODIR)
+	@printf "$(CDEF)"
+	@printf "$(TIME) $(CNORM) $(CCYAN)"
+	$(MAKE) -C $(dir $(LIB)) clean
+	@printf "$(CDEF)"
 
 fclean: clean
+	@printf "$(TIME) $(CMINUS) $(CRED)"
 	$(RM) $(NAME)
+	@printf "$(CDEF)"
+	@printf "$(TIME) $(CNORM) $(CCYAN)"
 	$(MAKE) -C $(dir $(LIB)) fclean
+	@printf "$(CDEF)"
 
 re: fclean all

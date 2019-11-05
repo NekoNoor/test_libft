@@ -31,8 +31,8 @@ Test(part2, ft_split)
 
 Test(part2, ft_itoa)
 {
-	cr_assert_str_eq(ft_itoa(-2147483648), "-2147483648");
-	cr_assert_str_eq(ft_itoa(2147483647), "2147483647");
+	cr_expect_str_eq(ft_itoa(-2147483648), "-2147483648");
+	cr_expect_str_eq(ft_itoa(2147483647), "2147483647");
 }
 
 Test(part2, ft_strmapi)

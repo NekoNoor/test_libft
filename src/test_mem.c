@@ -18,7 +18,7 @@ Test(mem, ft_memset)
 	char	a[] = "ajskdasjldk";
 
 	ft_memset(a, 'A', 8);
-	cr_assert_arr_eq(a, "AAAAAAAAldk", 12);
+	cr_expect_arr_eq(a, "AAAAAAAAldk", 12);
 }
 
 Test(mem, ft_bzero)
@@ -28,7 +28,7 @@ Test(mem, ft_bzero)
 
 	ft_bzero(a, 8);
 	bzero(b, 8);
-	cr_assert_arr_eq(a, b, 12);
+	cr_expect_arr_eq(a, b, 12);
 }
 
 Test(mem, ft_memcpy)
@@ -36,9 +36,9 @@ Test(mem, ft_memcpy)
 	char	a[] = "\0ajskdasjldki\0uvnadhipsrl";
 	char	b[] = "\0ajskdasjldki\0uvnadhipsrl";
 
-	cr_assert_arr_eq(ft_memcpy(a, "19274128390", 12), memcpy(b, "19274128390", 12), 12);
-	cr_assert_arr_eq(ft_memcpy(a, "", 12), memcpy(b, "", 12), 12);
-	cr_assert_eq(ft_memcpy(NULL, NULL, 12), memcpy(NULL, NULL, 12));
+	cr_expect_arr_eq(ft_memcpy(a, "19274128390", 12), memcpy(b, "19274128390", 12), 12);
+	cr_expect_arr_eq(ft_memcpy(a, "", 12), memcpy(b, "", 12), 12);
+	cr_expect_eq(ft_memcpy(NULL, NULL, 12), memcpy(NULL, NULL, 12));
 }
 
 Test(mem, ft_memccpy)
@@ -54,7 +54,7 @@ Test(mem, ft_memmove)
 
 	memmove(dst1, src, size);
 	ft_memmove(dst2, src, size);
-	cr_assert_arr_eq(dst1, dst2, size);
+	cr_expect_arr_eq(dst1, dst2, size);
 }
 
 Test(mem, ft_memchr)
