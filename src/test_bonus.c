@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/03 20:51:09 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/05 13:30:07 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,16 @@ Test(bonus, ft_lstdelone)
 	new = ft_lstnew(str);
 	ft_lstdelone(new, &del_f);
 	cr_expect_str_eq(str, "");
+}
+
+Test(bonus, ft_lstclear)
+{
+}
+
+Test(bonus, ft_lstiter)
+{
+}
+
+Test(bonus, ft_lstmap)
+{
 }
