@@ -6,7 +6,7 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/05 21:50:20 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/05 21:59:05 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,9 +71,6 @@ test: $(NAME)
 clean:
 	@printf "$(TIME) $(CMINUS) $(CRED)"
 	$(RM) -r $(ODIR)
-	@printf "$(CDEF)"
-	@printf "$(TIME) $(CNORM) $(CCYAN)"
-	$(MAKE) -C $(dir $(LIB)) clean
 	@printf "$(CDEF)"
 
 fclean: clean
