@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 19:30:08 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/06 22:04:12 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/06 22:24:03 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,44 +80,8 @@ Test(part2, ft_strmapi)
 	cr_expect_str_eq(ft_strmapi(str, &mapi_f), "abcdefghijklmnopqrstuvwxyz");
 }
 
-//char	*read_file(int fd)
-//{
-//	char	*buf;
-//	char	*out;
-//	size_t	size;
-//	
-//	buf = (char *)malloc(4096 + 1);
-//	out = strdup("");
-//	size = 1;
-//	while (size)
-//	{
-//		size = read(fd, buf, 4096);
-//		buf[size] = '\0';
-//		out = realloc(out, ft_strlen(out) + ft_strlen(buf) + 1);
-//		if (out == NULL)
-//			return (NULL);
-//		out = strcat(out, buf);
-//	}
-//	free(buf);
-//	return (out);
-//}
-
 Test(part2, ft_putchar_fd)
 {
-//	char	p1[] = "file1";
-//	char	p2[] = "file2";
-//	int		ad;
-//	int		bd;
-//	char	c;
-//
-//	c = 'z';
-//	ad = open(p1, O_RDWR);
-//	bd = open(p2, O_RDWR);
-//	ft_putchar_fd(c, ad);
-//	write(bd, &c, 1);
-//	cr_expect_str_eq(read_file(ad), read_file(bd));
-//	close(ad);
-//	close(bd);
 }
 
 Test(part2, ft_putstr_fd)
