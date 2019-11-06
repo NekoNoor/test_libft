@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:11:48 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/06 11:57:12 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/06 12:21:14 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Test(str, ft_strlcat)
 
 Test(str, ft_strchr)
 {
-	char	str[] = "fhio ghio io\x2a \52 \200ds9g0dbxkldf\242";
+	char	str[] = "fhio ghio io\x2a \0\52 \200ds9g0dbxkldf\242";
 
 	cr_expect_eq(ft_strchr(str, '\x2a'), strchr(str, '\x2a'));
 	cr_expect_eq(ft_strchr(str, '\200'), strchr(str, '\200'));
