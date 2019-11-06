@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/05 21:32:43 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/06 12:16:59 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Test(bonus, ft_lstadd_front)
 	ft_lstadd_front(&new, ft_lstnew(ft_strdup("owo")));
 	cr_expect_str_eq(new->content, "owo");
 	cr_expect_str_eq(new->next->content, "bla");
-	cr_expect_eq(new->next->next, NULL);
+	cr_expect_null(new->next->next);
 }
 
 Test(bonus, ft_lstsize)

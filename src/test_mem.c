@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:11:32 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/06 11:08:28 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/06 12:17:19 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Test(mem, ft_memset)
 	cr_expect_arr_eq(a, b, 12);
 	cr_expect_eq(ft_memset(a, '\222', 8), memset(a, '\222', 8));
 	memset(b, '\222', 8);
-	cr_expect_eq(ft_memset(NULL, 'a', 8), NULL);
+	cr_expect_null(ft_memset(NULL, 'a', 8));
 	ft_memset(a, '\x2a', 0);
 	memset(b, '\x2a', (0));
 	cr_expect_arr_eq(a, b, 12);
@@ -125,10 +125,28 @@ Test(mem, ft_memmove)
 
 Test(mem, ft_memchr)
 {
+	char	str[] = "fhio ghio io\x2a \52 \200ds9g0dbxkldf\242";
+
+	cr_expect_eq(ft_memchr(str, '\x2a', 15), memchr(str, '\x2a', 15));
+	cr_expect_eq(ft_memchr(str, '\200', 15), memchr(str, '\200', 15));
+	cr_expect_eq(ft_memchr(str, '\200', 5), memchr(str, '\200', 5));
+	cr_expect_eq(ft_memchr(str, '\212', 15), memchr(str, '\212', 15));
+	cr_expect_eq(ft_memchr(str, '\242', 30), memchr(str, '\242', 30));
+	cr_expect_eq(ft_memchr(str, '\0', 31), memchr(str, '\0', 31));
 }
 
 Test(mem, ft_memcmp)
 {
+	char	a[] = "u'9t3790 t23n90t390n33790n";
+	char	b[] = "u'9t3790 t23n90t390n33790n";
+	char	c[] = "u'9t3790 t23n90t\090n33790n";
+	char	d[] = "u'9t3790 t23n90t\090n\2423790n";
+
+	cr_expect_eq(ft_memcmp(a, b, 26), memcmp(a, b, 26));
+	cr_expect_eq(ft_memcmp(b, c, 6), memcmp(b, c, 6));
+	cr_expect_eq(ft_memcmp(b, c, 16), memcmp(b, c, 16));
+	cr_expect_eq(ft_memcmp(b, c, 26), memcmp(b, c, 26));
+	cr_expect_eq(ft_memcmp(c, d, 26), memcmp(c, d, 26));
 }
 
 Test(mem, ft_calloc)
