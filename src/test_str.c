@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:11:48 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/06 12:21:14 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/06 12:58:27 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ Test(str, ft_strchr)
 
 Test(str, ft_strrchr)
 {
+	char	str[] = "fhio ghio io\x2a \0\52 \200ds9g0dbxkldf\242";
+
+	cr_expect_eq(ft_strrchr(str, '\x2a'), strrchr(str, '\x2a'));
+	cr_expect_eq(ft_strrchr(str, '\200'), strrchr(str, '\200'));
+	cr_expect_eq(ft_strrchr(str, '\200'), strrchr(str, '\200'));
+	cr_expect_eq(ft_strrchr(str, '\212'), strrchr(str, '\212'));
+	cr_expect_eq(ft_strrchr(str, '\242'), strrchr(str, '\242'));
+	cr_expect_eq(ft_strrchr(str, '\0'), strrchr(str, '\0'));
 }
 
 Test(str, ft_strnstr)
