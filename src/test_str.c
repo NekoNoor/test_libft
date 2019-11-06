@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:11:48 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/06 22:01:00 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/06 22:14:30 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,23 @@ Test(str, ft_strrchr)
 
 Test(str, ft_strnstr)
 {
+	char	s1[] = "90dhgas90ghas90gahs90vhxzcklfvadsfhOWOdklfjklxcjv";
+	char	s2[] = "OWO";
+	char	str[] = "90dhgas90ghb";
+	char	owo[] = "90dh";
+	char	ghb[] = "ghb";
+	char	empty[] = "";
+
+	cr_expect_eq(ft_strnstr(s1, s2, ft_strlen(s1)), strnstr(s1, s2, ft_strlen(s1)));
+	cr_expect_eq(ft_strnstr(s2, s1, ft_strlen(s2)), strnstr(s2, s1, ft_strlen(s2)));
+	cr_expect_eq(ft_strnstr(s1, str, ft_strlen(s1)), strnstr(s1, str, ft_strlen(s1)));
+	cr_expect_eq(ft_strnstr(owo, str, ft_strlen(owo)), strnstr(owo, str, ft_strlen(owo)));
+	cr_expect_eq(ft_strnstr(str, ghb, 11), strnstr(str, ghb, 11));
+	cr_expect_eq(ft_strnstr(str, ghb, 9), strnstr(str, ghb, 9));
+	cr_expect_eq(ft_strnstr(s1, ghb, ft_strlen(s1)), strnstr(s1, ghb, ft_strlen(s1)));
+	cr_expect_eq(ft_strnstr(s1, empty, ft_strlen(s1)), strnstr(s1, empty, ft_strlen(s1)));
+	cr_expect_eq(ft_strnstr(s1, s1, ft_strlen(s1)), strnstr(s1, s1, ft_strlen(s1)));
+	cr_expect_eq(ft_strnstr(s2, s2, 4), strnstr(s2, s2, 4));
 }
 
 Test(str, ft_strncmp)
