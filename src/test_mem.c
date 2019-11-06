@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:11:32 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/06 12:17:19 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/06 22:00:24 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ Test(mem, ft_memset)
 	cr_expect_arr_eq(a, b, 12);
 	cr_expect_eq(ft_memset(a, '\222', 8), memset(a, '\222', 8));
 	memset(b, '\222', 8);
-	cr_expect_null(ft_memset(NULL, 'a', 8));
 	ft_memset(a, '\x2a', 0);
 	memset(b, '\x2a', (0));
 	cr_expect_arr_eq(a, b, 12);
@@ -43,7 +42,6 @@ Test(mem, ft_bzero)
 	ft_bzero(a, 0);
 	bzero(b, (0));
 	cr_expect_arr_eq(a, b, 12);
-	ft_bzero(NULL, 12);
 }
 
 Test(mem, ft_memcpy)
@@ -151,4 +149,8 @@ Test(mem, ft_memcmp)
 
 Test(mem, ft_calloc)
 {
+	free(ft_calloc(0x2a, 0x2a));
+	cr_expect_arr_eq(ft_calloc(42, 21), calloc(42, 21), 42 * 21);
+	free(ft_calloc(0, 0));
+	cr_expect_arr_eq(ft_calloc(9999, sizeof(int)), calloc(9999, sizeof(int)), 9999 * sizeof(int));
 }
