@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:11:32 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/05 22:51:00 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/06 11:08:28 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,12 @@ Test(mem, ft_memccpy)
 
 Test(mem, ft_memmove)
 {
-	char			*str = "nyaaaaaaaaaaaaaaaaaaaaaaaaa";
-	char			a[] = "b190-12895n 7s9adfdiog dasfg90";
-	char			b[] = "b190-12895n 7s9adfdiog dasfg90";
+	char			str[] = "nyaaaaaaaaaaaaaaaaaaaaaaaaa";
+	char			str0[] = "nyaaaaaa\0aaaaa\0aa\200aaaa\150aaaaaaaa";
+	char			strover[] = "v8h9efbhg89234-grfh8a9dg89ade0gfh8392gf89gds";
+	char			strrevo[] = "sdg98fg2938hfg0eda98gd9a8hfrg-43298ghbfe9h8v";
+	char			a[] = "b190-12895n 7s9adfdiog dasfg90naehq90123904h124";
+	char			b[] = "b190-12895n 7s9adfdiog dasfg90naehq90123904h124";
 	unsigned long	src = 0xdeadbeef;
 	unsigned long	dst1;
 	unsigned long	dst2;
@@ -99,6 +102,25 @@ Test(mem, ft_memmove)
 	memmove(&dst1, &src, sizeof(src));
 	ft_memmove(&dst2, &src, sizeof(src));
 	cr_expect_arr_eq(a, b, sizeof(src));
+	cr_expect_eq(ft_memmove(a, str, ft_strlen(str)), memmove(a, str, ft_strlen(str)));
+	cr_expect_eq(ft_memmove("", "" - 1, 0), memmove("", "" - 1, 0));
+	ft_memmove(a, str0, 31);
+	memmove(b, str0, 31);
+	cr_expect_arr_eq(a, b, 31);
+	ft_memcpy(a, strover, ft_strlen(strover));
+	ft_memcpy(b, strover, ft_strlen(strover));
+	ft_memmove(a + 5, a, 39);
+	memmove(b + 5, b, 39);
+	cr_expect_arr_eq(a, b, 31);
+	ft_memcpy(a, strrevo, ft_strlen(strrevo));
+	ft_memcpy(b, strrevo, ft_strlen(strrevo));
+	ft_memmove(a, a + 5, 39);
+	memmove(b, b + 5, 39);
+	cr_expect_arr_eq(a, b, 31);
+	ft_memmove(NULL, NULL, 100);
+	ft_memmove(a, a, 30);
+	memmove(b, b, 30);
+	cr_expect_arr_eq(a, b, 30);
 }
 
 Test(mem, ft_memchr)
