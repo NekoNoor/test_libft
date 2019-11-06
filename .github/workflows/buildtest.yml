@@ -12,11 +12,15 @@ jobs:
               submodules: recursive
         - name: install criterion
           run: brew install snaipe/soft/criterion
-        - name: run make
+        - name: compile libft
           run: make
           env:
               BREW: /usr/local/
-        - name: run make test
+        - name: test normal libft functions
+          run: make test
+          env:
+              BREW: /usr/local/
+        - name: test bonus functions
           run: make test
           env:
               BREW: /usr/local/
