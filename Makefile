@@ -6,13 +6,16 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/06 22:01:55 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/06 22:43:55 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
-CFLAGS = -g -fprofile-instr-generate -fcoverage-mapping -Wall -Wextra -Werror \
+CFLAGS = -Wall -Wextra -Werror \
 		 -I libft -isystem ${BREW}/include
+ifeq (${DEBUG},true)
+	CFLAGS := -g -fprofile-instr-generate -fcoverage-mapping $(CFLAGS)
+endif
 LDFLAGS = -L libft -L ${BREW}/lib -lcriterion -lft
 
 SRC = test_mem.c test_misc.c test_str.c test_part2.c
@@ -53,12 +56,12 @@ $(NAME): $(LIB) | $(OBJ)
 
 $(LIB):
 	@printf "$(TIME) $(CNORM) $(CCYAN)"
-	$(MAKE) "DEBUG=true" -C $(dir $(LIB))
+	$(MAKE) "DEBUG=${DEBUG}" -C $(dir $(LIB))
 	@printf "$(CDEF)"
 
 bonus: $(LIB) | $(OBJ) $(BOBJ)
 	@printf "$(TIME) $(CNORM) $(CCYAN)"
-	$(MAKE) bonus "DEBUG=true" -C $(dir $(LIB))
+	$(MAKE) bonus "DEBUG=${DEBUG}" -C $(dir $(LIB))
 	@printf "$(CDEF)"
 	@printf "$(TIME) $(CPLUS) $(CGREEN)"
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $|
