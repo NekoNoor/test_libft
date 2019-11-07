@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/06 12:16:59 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/07 12:46:14 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,18 +174,20 @@ void	*map_f(void *content)
 
 Test(bonus, ft_lstmap)
 {
+	t_list	*old;
 	t_list	*new;
 
-	new = NULL;
-	ft_lstadd_back(&new, ft_lstnew(ft_strdup("owo")));
-	ft_lstadd_back(&new, ft_lstnew(ft_strdup("whats")));
-	ft_lstadd_back(&new, ft_lstnew(ft_strdup("this")));
-	ft_lstadd_back(&new, ft_lstnew(ft_strdup("notices")));
-	ft_lstadd_back(&new, ft_lstnew(ft_strdup("your")));
-	new = ft_lstmap(new, &map_f, &del_f);
-	cr_expect_str_eq(new->content, "OWO");
-	cr_expect_str_eq(new->next->content, "WHATS");
-	cr_expect_str_eq(new->next->next->content, "THIS");
-	cr_expect_str_eq(new->next->next->next->content, "NOTICES");
-	cr_expect_str_eq(new->next->next->next->next->content, "YOUR");
+	old = NULL;
+	ft_lstadd_back(&old, ft_lstnew(ft_strdup("owo")));
+	ft_lstadd_back(&old, ft_lstnew(ft_strdup("whats")));
+	ft_lstadd_back(&old, ft_lstnew(ft_strdup("this")));
+	ft_lstadd_back(&old, ft_lstnew(ft_strdup("notices")));
+	ft_lstadd_back(&old, ft_lstnew(ft_strdup("your")));
+	new = ft_lstmap(old, &map_f, &del_f);
+	while (new)
+	{
+		cr_expect_str_neq(old->content, new->content);
+		old = old->next;
+		new = new->next;
+	}
 }
