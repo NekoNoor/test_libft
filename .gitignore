@@ -10,4 +10,3 @@
 !.github/workflows/*.yml
 !.gitignore
 !.gitmodules
-!.gitlab-ci.yml
