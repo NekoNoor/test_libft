@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/06 22:03:55 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/09 21:39:22 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ Test(misc, ft_atoi)
 	cr_expect_eq(ft_atoi("214748364790"), atoi("214748364790"));
 	cr_expect_eq(ft_atoi("-9223372036854775808"), atoi("-9223372036854775808"));
 	cr_expect_eq(ft_atoi("+9223372036854775807"), atoi("+9223372036854775807"));
-	cr_expect_eq(ft_atoi("-9223372036854775809"), atoi("-9223372036854775809"));
-	cr_expect_eq(ft_atoi("+9223372036854775808"), atoi("+9223372036854775808"));
+	cr_expect_eq(ft_atoi("-9223372036854775809"), atoi("-9223372036854775809"), "%i\n%i\n", ft_atoi("-9223372036854775809"), atoi("-9223372036854775809"));
+	cr_expect_eq(ft_atoi("+9223372036854775808"), atoi("+9223372036854775808"), "%i\n%i\n", ft_atoi("+9223372036854775808"), atoi("+9223372036854775808"));
 	cr_expect_eq(ft_atoi("-922337203685477580900"), atoi("-922337203685477580900"));
 	cr_expect_eq(ft_atoi("+922337203685477580800"), atoi("+922337203685477580800"));
 	cr_expect_eq(ft_atoi("-999999999999999999999"), atoi("-999999999999999999999"));
@@ -122,6 +122,42 @@ Test(misc, ft_tolower)
 	while (c <= 300)
 	{
 		cr_expect_eq(ft_tolower(c), tolower(c));
+		c++;
+	}
+}
+
+Test(misc, ft_isspace)
+{
+	int	c;
+
+	c = -300;
+	while (c <= 300)
+	{
+		cr_expect_eq(ft_isspace(c), isspace(c));
+		c++;
+	}
+}
+
+Test(misc, ft_isupper)
+{
+	int	c;
+
+	c = -300;
+	while (c <= 300)
+	{
+		cr_expect_eq(ft_isupper(c), isupper(c));
+		c++;
+	}
+}
+
+Test(misc, ft_islower)
+{
+	int	c;
+
+	c = -300;
+	while (c <= 300)
+	{
+		cr_expect_eq(ft_islower(c), islower(c));
 		c++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:11:32 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/06 22:00:24 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/09 17:47:39 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ Test(mem, ft_bzero)
 {
 	char	a[] = "ajskdasjldk";
 	char	b[] = "ajskdasjldk";
+	char	*abig;
+	char	*bbig;
 
 	ft_bzero(a, 8);
 	bzero(b, 8);
@@ -42,6 +44,13 @@ Test(mem, ft_bzero)
 	ft_bzero(a, 0);
 	bzero(b, (0));
 	cr_expect_arr_eq(a, b, 12);
+	abig = malloc(8192);
+	bbig = malloc(8192);
+	ft_memset(abig, 'A', 8192);
+	memset(bbig, 'A', 8192);
+	ft_bzero(abig, 4096);
+	bzero(bbig, 4096);
+	cr_expect_arr_eq(abig, bbig, 8192);
 }
 
 Test(mem, ft_memcpy)
@@ -53,8 +62,8 @@ Test(mem, ft_memcpy)
 	cr_expect_arr_eq(ft_memcpy(a, "19274128390", 12), memcpy(b, "19274128390", 12), 12);
 	cr_expect_arr_eq(ft_memcpy(a, "", 12), memcpy(b, "", 12), 12);
 	cr_expect_eq(ft_memcpy(a, "owowhatsthis", 12), memcpy(a, "owowhatsthis", 12));
-	cr_expect_eq(ft_memcpy(NULL, NULL, 12), memcpy(NULL, NULL, 12));
 	cr_expect_arr_eq(ft_memcpy(a, str, ft_strlen(str)), memcpy(b, str, ft_strlen(str)), ft_strlen(str));
+	memcpy(NULL, NULL, 10);
 }
 
 Test(mem, ft_memccpy)
@@ -115,7 +124,6 @@ Test(mem, ft_memmove)
 	ft_memmove(a, a + 5, 39);
 	memmove(b, b + 5, 39);
 	cr_expect_arr_eq(a, b, 31);
-	ft_memmove(NULL, NULL, 100);
 	ft_memmove(a, a, 30);
 	memmove(b, b, 30);
 	cr_expect_arr_eq(a, b, 30);

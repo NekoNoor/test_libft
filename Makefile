@@ -6,17 +6,16 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/06 22:43:55 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/09 21:24:03 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror \
-		 -I libft -isystem ${BREW}/include
+CFLAGS = -Wall -Wextra -Werror -I libft
 ifeq (${DEBUG},true)
 	CFLAGS := -g -fprofile-instr-generate -fcoverage-mapping $(CFLAGS)
 endif
-LDFLAGS = -L libft -L ${BREW}/lib -lcriterion -lft
+LDFLAGS = -L libft -lcriterion -lft
 
 SRC = test_mem.c test_misc.c test_str.c test_part2.c
 BSRC = test_bonus.c

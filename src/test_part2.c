@@ -6,7 +6,7 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 19:30:08 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/06 22:24:03 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/09 20:34:09 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 Test(part2, ft_substr)
 {
 	char	str[] = "blablablaISEEYOU";
+	char	empty[] = "";
 
 	cr_expect_str_eq(ft_substr(str, 3, 6), "blabla");
 	cr_expect_str_eq(ft_substr(str, 9, 7), "ISEEYOU");
 	cr_expect_str_eq(ft_substr(str, 15, 3), "U");
-	cr_expect_null(ft_substr(str, 16, 3));
+	cr_expect_str_eq(ft_substr(str, 16, 3), "");
+	cr_expect_str_eq(ft_substr(empty, 0, 1), "");
 	cr_expect_null(ft_substr(NULL, 16, 3));
 }
 
@@ -60,6 +62,12 @@ Test(part2, ft_split)
 	cr_expect_str_eq(arr[6], "by");
 	cr_expect_str_eq(arr[7], "slashes");
 	cr_expect_null(arr[8]);
+	arr = ft_split(str, '\0');
+	cr_expect_str_eq(arr[0], "///this///is//a///test//string/seperated/by//slashes///");
+	cr_expect_null(arr[1]);
+	arr = ft_split(str, '%');
+	cr_expect_str_eq(arr[0], "///this///is//a///test//string/seperated/by//slashes///");
+	cr_expect_null(arr[1]);
 }
 
 Test(part2, ft_itoa)
