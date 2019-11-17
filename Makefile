@@ -6,11 +6,11 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/09 21:24:03 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/17 18:35:20 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I libft
 ifeq (${DEBUG},true)
 	CFLAGS := -g -fprofile-instr-generate -fcoverage-mapping $(CFLAGS)
@@ -26,7 +26,7 @@ BOBJ = $(addprefix $(ODIR)/,$(BSRC:.c=.o))
 
 LIB = libft/libft.a
 
-NAME = test_libft
+NAME = run_tests
 
 CRED=\x1b[31m
 CGREEN=\x1b[32m
@@ -42,52 +42,43 @@ CNORM=$(CYELLOW)[~]$(CDEF)
 
 TIME=$(CCYAN)[$$(date +"%H:%M:%S")]$(CDEF)
 
-vpath %.c src
+vpath %.c tests
 
 .PHONY: clean fclean test
 
 all: $(NAME)
 
 $(NAME): $(LIB) | $(OBJ)
-	@printf "$(TIME) $(CPLUS) $(CGREEN)"
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $|
-	@printf "$(CDEF)"
+	@echo "$(TIME) $(CPLUS) $(CGREEN)Linking objects into $@...$(CDEF)"
+	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $|
 
 $(LIB):
-	@printf "$(TIME) $(CNORM) $(CCYAN)"
-	$(MAKE) "DEBUG=${DEBUG}" -C $(dir $(LIB))
-	@printf "$(CDEF)"
+	@echo "$(TIME) $(CNORM) $(CCYAN)Running make in $(dir $(LIB))...$(CDEF)"
+	@$(MAKE) "DEBUG=${DEBUG}" -C $(dir $(LIB))
 
 bonus: $(LIB) | $(OBJ) $(BOBJ)
-	@printf "$(TIME) $(CNORM) $(CCYAN)"
-	$(MAKE) bonus "DEBUG=${DEBUG}" -C $(dir $(LIB))
-	@printf "$(CDEF)"
-	@printf "$(TIME) $(CPLUS) $(CGREEN)"
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $|
-	@printf "$(CDEF)"
+	@echo "$(TIME) $(CNORM) $(CCYAN)Running make bonus in $(dir $(LIB))...$(CDEF)"
+	@$(MAKE) bonus "DEBUG=${DEBUG}" -C $(dir $(LIB))
+	@echo "$(TIME) $(CPLUS) $(CGREEN)Linking bonus objects into $(NAME)...$(CDEF)"
+	@$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $|
 
 $(ODIR)/%.o: %.c
-	@printf "$(TIME) $(CPLUS) $(CBLUE)"
+	@echo "$(TIME) $(CPLUS) $(CBLUE)Compiling $< to $@...$(CDEF)"
 	@mkdir -p $(ODIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(CDEF)"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 test: $(NAME)
-	@printf "$(TIME) $(CNORM) $(CCYAN)"
-	./$(NAME) --verbose
-	@printf "$(CDEF)"
+	@echo "$(TIME) $(CNORM) $(CCYAN)Running $(NAME)...$(CDEF)"
+	@./$(NAME) --verbose
 
 clean:
-	@printf "$(TIME) $(CMINUS) $(CRED)"
-	$(RM) -r $(ODIR)
-	@printf "$(CDEF)"
+	@echo "$(TIME) $(CMINUS) $(CRED)Cleaning object files...$(CDEF)"
+	@$(RM) -r $(ODIR)
 
 fclean: clean
-	@printf "$(TIME) $(CMINUS) $(CRED)"
-	$(RM) $(NAME)
-	@printf "$(CDEF)"
-	@printf "$(TIME) $(CNORM) $(CCYAN)"
-	$(MAKE) -C $(dir $(LIB)) fclean
-	@printf "$(CDEF)"
+	@echo "$(TIME) $(CMINUS) $(CRED)Cleaning $(NAME)...$(CDEF)"
+	@$(RM) $(NAME)
+	@echo "$(TIME) $(CNORM) $(CCYAN)Running make fclean in $(dir $(LIB))...$(CDEF)"
+	@$(MAKE) fclean -C $(dir $(LIB))
 
 re: fclean all

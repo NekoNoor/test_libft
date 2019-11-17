@@ -6,14 +6,14 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/07 12:46:14 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/12 05:39:26 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <criterion/criterion.h>
 
-Test(bonus, ft_lstnew)
+Test(ft_lstnew, create_list)
 {
 	t_list	*lst;
 
@@ -21,7 +21,7 @@ Test(bonus, ft_lstnew)
 	cr_expect_str_eq(lst->content, "nya");
 }
 
-Test(bonus, ft_lstadd_front)
+Test(ft_lstadd_front, create_list_from_null)
 {
 	t_list	*new;
 
@@ -33,7 +33,7 @@ Test(bonus, ft_lstadd_front)
 	cr_expect_null(new->next->next);
 }
 
-Test(bonus, ft_lstsize)
+Test(ft_lstsize, get_size)
 {
 	t_list	*new;
 
@@ -49,7 +49,7 @@ Test(bonus, ft_lstsize)
 	cr_expect_eq(ft_lstsize(new), 4);
 }
 
-Test(bonus, ft_lstlast)
+Test(ft_lstlast, get_last)
 {
 	t_list	*new;
 
@@ -62,7 +62,7 @@ Test(bonus, ft_lstlast)
 	cr_expect_str_eq(ft_lstlast(new)->content, "last");
 }
 
-Test(bonus, ft_lstadd_back)
+Test(ft_lstadd_back, add_to_back)
 {
 	t_list	*new;
 
@@ -82,7 +82,7 @@ void	del_f(void *content)
 	ft_bzero(content, ft_strlen(content));
 }
 
-Test(bonus, ft_lstdelone)
+Test(ft_lstdelone, delete_one)
 {
 	t_list	*new;
 	char	*str;
@@ -93,7 +93,7 @@ Test(bonus, ft_lstdelone)
 	cr_expect_str_empty(str);
 }
 
-Test(bonus, ft_lstclear)
+Test(ft_lstclear, clear_list)
 {
 	t_list	*new;
 	char	**str_p;
@@ -137,7 +137,7 @@ void	iter_f(void *content)
 	}
 }
 
-Test(bonus, ft_lstiter)
+Test(ft_lstiter, iterate_list)
 {
 	t_list	*new;
 
@@ -172,7 +172,7 @@ void	*map_f(void *content)
 	return ((void *)str);
 }
 
-Test(bonus, ft_lstmap)
+Test(ft_lstmap, create_new_list)
 {
 	t_list	*old;
 	t_list	*new;

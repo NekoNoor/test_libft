@@ -6,19 +6,19 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:11:48 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/09 16:03:19 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/14 17:56:55 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <criterion/criterion.h>
 
-Test(str, ft_strlen)
+Test(ft_strlen, get_length)
 {
 	cr_expect_eq(ft_strlen("hello world!"), 12);
 }
 
-Test(str, ft_strlcpy)
+Test(ft_strlcpy, copy_string)
 {
 	char	src[] = "abcdefghijkl";
 	char	dst[256];
@@ -27,7 +27,7 @@ Test(str, ft_strlcpy)
 	cr_expect_str_eq(dst, "abcdefghijkl", "%s", dst);
 }
 
-Test(str, ft_strlcat)
+Test(ft_strlcat, concatenate_strings)
 {
 	char	*dst = ft_strdup("meow");
 	char	*src = ft_strdup("woof");
@@ -36,7 +36,7 @@ Test(str, ft_strlcat)
 	cr_expect_str_eq(dst, "meowwoof");
 }
 
-Test(str, ft_strchr)
+Test(ft_strchr, find_character)
 {
 	char	str[] = "fhio ghio io\x2a \0\52 \200ds9g0dbxkldf\242";
 
@@ -48,7 +48,7 @@ Test(str, ft_strchr)
 	cr_expect_eq(ft_strchr(str, '\0'), strchr(str, '\0'));
 }
 
-Test(str, ft_strrchr)
+Test(ft_strrchr, find_character_from_end)
 {
 	char	str[] = "fhio ghio io\x2a \0\52 \200ds9g0dbxkldf\242";
 
@@ -60,7 +60,7 @@ Test(str, ft_strrchr)
 	cr_expect_eq(ft_strrchr(str, '\0'), strrchr(str, '\0'));
 }
 
-Test(str, ft_strnstr)
+Test(ft_strnstr, find_string_in_string)
 {
 	char	s1[] = "90dhgas90ghas90gahs90vhxzcklfvadsfhOWOdklfjklxcjv";
 	char	s2[] = "OWO";
@@ -73,15 +73,15 @@ Test(str, ft_strnstr)
 	cr_expect_eq(ft_strnstr(s2, s1, ft_strlen(s2)), strnstr(s2, s1, ft_strlen(s2)));
 	cr_expect_eq(ft_strnstr(s1, str, ft_strlen(s1)), strnstr(s1, str, ft_strlen(s1)));
 	cr_expect_eq(ft_strnstr(owo, str, ft_strlen(owo)), strnstr(owo, str, ft_strlen(owo)));
-	cr_expect_eq(ft_strnstr(str, ghb, 11), strnstr(str, ghb, 11));
-	cr_expect_eq(ft_strnstr(str, ghb, 9), strnstr(str, ghb, 9));
+	cr_expect_eq(ft_strnstr(str, ghb, 11), strnstr(str, ghb, 11), "%s\n%s", ft_strnstr(str, ghb, 11), strnstr(str, ghb, 11));
+	cr_expect_eq(ft_strnstr(str, ghb, 9), strnstr(str, ghb, 9), "%s\n%s", ft_strnstr(str, ghb, 11), strnstr(str, ghb, 11));
 	cr_expect_eq(ft_strnstr(s1, ghb, ft_strlen(s1)), strnstr(s1, ghb, ft_strlen(s1)));
 	cr_expect_eq(ft_strnstr(s1, empty, ft_strlen(s1)), strnstr(s1, empty, ft_strlen(s1)));
 	cr_expect_eq(ft_strnstr(s1, s1, ft_strlen(s1)), strnstr(s1, s1, ft_strlen(s1)));
 	cr_expect_eq(ft_strnstr(s2, s2, 4), strnstr(s2, s2, 4));
 }
 
-Test(str, ft_strncmp)
+Test(ft_strncmp, compare_strings)
 {
 	char	a[] = "u'9t3790 t23n90t390n33790n";
 	char	b[] = "u'9t3790 t23n90t390n33790n";
@@ -95,7 +95,7 @@ Test(str, ft_strncmp)
 	cr_expect_eq(ft_strncmp(c, d, 26), strncmp(c, d, 26));
 }
 
-Test(str, ft_strdup)
+Test(ft_strdup, duplicate_string)
 {
 	char	str[] = "duplicator";
 	char	str0[] = "ahsgioasgopahsgopasg\0asghiaodghiaosg";

@@ -6,14 +6,14 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:12:09 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/09 21:39:22 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/12 05:42:21 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <criterion/criterion.h>
 
-Test(misc, ft_atoi)
+Test(ft_atoi, ascii_to_int)
 {
 	cr_expect_eq(ft_atoi("14"), atoi("14"));
 	cr_expect_eq(ft_atoi("+14"), atoi("14"));
@@ -42,7 +42,7 @@ Test(misc, ft_atoi)
 	cr_expect_eq(ft_atoi("		-14"), atoi("		-14"));
 }
 
-Test(misc, ft_isalpha)
+Test(ft_isalpha, compare_libc)
 {
 	int	c;
 
@@ -54,7 +54,7 @@ Test(misc, ft_isalpha)
 	}
 }
 
-Test(misc, ft_isdigit)
+Test(ft_isdigit, compare_libc)
 {
 	int	c;
 
@@ -66,7 +66,7 @@ Test(misc, ft_isdigit)
 	}
 }
 
-Test(misc, ft_isalnum)
+Test(ft_isalnum, compare_libc)
 {
 	int	c;
 
@@ -78,7 +78,7 @@ Test(misc, ft_isalnum)
 	}
 }
 
-Test(misc, ft_isascii)
+Test(ft_isascii, compare_libc)
 {
 	int	c;
 
@@ -90,7 +90,7 @@ Test(misc, ft_isascii)
 	}
 }
 
-Test(misc, ft_isprint)
+Test(ft_isprint, compare_libc)
 {
 	int	c;
 
@@ -102,7 +102,7 @@ Test(misc, ft_isprint)
 	}
 }
 
-Test(misc, ft_toupper)
+Test(ft_toupper, compare_libc)
 {
 	int	c;
 
@@ -114,7 +114,7 @@ Test(misc, ft_toupper)
 	}
 }
 
-Test(misc, ft_tolower)
+Test(ft_tolower, compare_libc)
 {
 	int	c;
 
@@ -125,40 +125,3 @@ Test(misc, ft_tolower)
 		c++;
 	}
 }
-
-Test(misc, ft_isspace)
-{
-	int	c;
-
-	c = -300;
-	while (c <= 300)
-	{
-		cr_expect_eq(ft_isspace(c), isspace(c));
-		c++;
-	}
-}
-
-Test(misc, ft_isupper)
-{
-	int	c;
-
-	c = -300;
-	while (c <= 300)
-	{
-		cr_expect_eq(ft_isupper(c), isupper(c));
-		c++;
-	}
-}
-
-Test(misc, ft_islower)
-{
-	int	c;
-
-	c = -300;
-	while (c <= 300)
-	{
-		cr_expect_eq(ft_islower(c), islower(c));
-		c++;
-	}
-}
-

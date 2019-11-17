@@ -6,14 +6,14 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 19:30:08 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/10 18:47:57 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/12 05:43:53 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <criterion/criterion.h>
 
-Test(part2, ft_substr)
+Test(ft_substr, create_substring)
 {
 	char	str[] = "blablablaISEEYOU";
 	char	empty[] = "";
@@ -26,7 +26,7 @@ Test(part2, ft_substr)
 	cr_expect_null(ft_substr(NULL, 16, 3));
 }
 
-Test(part2, ft_strjoin)
+Test(ft_strjoin, join_strings)
 {
 	char	s1[] = "1234567890";
 	char	s2[] = "0987654321";
@@ -34,7 +34,7 @@ Test(part2, ft_strjoin)
 	cr_expect_str_eq(ft_strjoin(s1, s2), "12345678900987654321");
 }
 
-Test(part2, ft_strtrim)
+Test(ft_strtrim, trim_string)
 {
 	char	str[] = "the quick brown fox jumps over the lazy dog";
 	char	set1[] = "the dog";
@@ -47,7 +47,7 @@ Test(part2, ft_strtrim)
 	cr_expect_str_eq(ft_strtrim(str, NULL), "the quick brown fox jumps over the lazy dog");
 }
 
-Test(part2, ft_split)
+Test(ft_split, split_string)
 {
 	char	str[] = "///this///is//a///test//string/seperated/by//slashes///";
 	char	**arr;
@@ -70,7 +70,7 @@ Test(part2, ft_split)
 	cr_expect_null(arr[1]);
 }
 
-Test(part2, ft_itoa)
+Test(ft_itoa, int_to_ascii)
 {
 	cr_expect_str_eq(ft_itoa(-2147483648), "-2147483648");
 	cr_expect_str_eq(ft_itoa(2147483647), "2147483647");
@@ -81,25 +81,25 @@ char	mapi_f(unsigned int i, char c)
 	return (c + i);
 }
 
-Test(part2, ft_strmapi)
+Test(ft_strmapi, map_string)
 {
 	char	str[] = "aaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 	cr_expect_str_eq(ft_strmapi(str, &mapi_f), "abcdefghijklmnopqrstuvwxyz");
 }
 
-Test(part2, ft_putchar_fd)
+Test(ft_putchar_fd, put_character)
 {
 }
 
-Test(part2, ft_putstr_fd)
+Test(ft_putstr_fd, put_string)
 {
 }
 
-Test(part2, ft_putendl_fd)
+Test(ft_putendl_fd, put_endline)
 {
 }
 
-Test(part2, ft_putnbr_fd)
+Test(ft_putnbr_fd, put_number)
 {
 }

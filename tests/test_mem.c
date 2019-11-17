@@ -6,14 +6,14 @@
 /*   By: nschat <nschat@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:11:32 by nschat        #+#    #+#                 */
-/*   Updated: 2019/11/09 17:47:39 by nschat        ########   odam.nl         */
+/*   Updated: 2019/11/17 18:37:56 by nschat        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <criterion/criterion.h>
 
-Test(mem, ft_memset)
+Test(ft_memset, set_small_bytes)
 {
 	char	a[] = "ajskdasjldk";
 	char	b[] = "ajskdasjldk";
@@ -31,7 +31,7 @@ Test(mem, ft_memset)
 	cr_expect_arr_eq(a, b, 12);
 }
 
-Test(mem, ft_bzero)
+Test(ft_bzero, set_small_bytes)
 {
 	char	a[] = "ajskdasjldk";
 	char	b[] = "ajskdasjldk";
@@ -53,7 +53,7 @@ Test(mem, ft_bzero)
 	cr_expect_arr_eq(abig, bbig, 8192);
 }
 
-Test(mem, ft_memcpy)
+Test(ft_memcpy, copy_memory)
 {
 	char	a[] = "\0ajskdasjldki\0uvnadhipsrl";
 	char	b[] = "\0ajskdasjldki\0uvnadhipsrl";
@@ -66,7 +66,7 @@ Test(mem, ft_memcpy)
 	memcpy(NULL, NULL, 10);
 }
 
-Test(mem, ft_memccpy)
+Test(ft_memccpy, copy_memory_to_byte)
 {
 	char	a[] = "ajskdasjldkiuvnadhipsrl";
 	char	b[] = "ajskdasjldkiuvnadhipsrl";
@@ -91,7 +91,7 @@ Test(mem, ft_memccpy)
 	cr_expect_arr_eq(ft_memccpy(a, str, 'i', 13), memccpy(b, str, 'i', 13), 15);
 }
 
-Test(mem, ft_memmove)
+Test(ft_memmove, copy_memory_overlap)
 {
 	char			str[] = "nyaaaaaaaaaaaaaaaaaaaaaaaaa";
 	char			str0[] = "nyaaaaaa\0aaaaa\0aa\200aaaa\150aaaaaaaa";
@@ -129,7 +129,7 @@ Test(mem, ft_memmove)
 	cr_expect_arr_eq(a, b, 30);
 }
 
-Test(mem, ft_memchr)
+Test(ft_memchr, find_byte)
 {
 	char	str[] = "fhio ghio io\x2a \52 \200ds9g0dbxkldf\242";
 
@@ -141,7 +141,7 @@ Test(mem, ft_memchr)
 	cr_expect_eq(ft_memchr(str, '\0', 31), memchr(str, '\0', 31));
 }
 
-Test(mem, ft_memcmp)
+Test(ft_memcmp, compare_mem)
 {
 	char	a[] = "u'9t3790 t23n90t390n33790n";
 	char	b[] = "u'9t3790 t23n90t390n33790n";
@@ -155,7 +155,7 @@ Test(mem, ft_memcmp)
 	cr_expect_eq(ft_memcmp(c, d, 26), memcmp(c, d, 26));
 }
 
-Test(mem, ft_calloc)
+Test(ft_calloc, allocate_mem_and_zero)
 {
 	free(ft_calloc(0x2a, 0x2a));
 	cr_expect_arr_eq(ft_calloc(42, 21), calloc(42, 21), 42 * 21);
