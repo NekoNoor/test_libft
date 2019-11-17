@@ -6,7 +6,7 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/17 18:35:20 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/17 21:31:22 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,19 +28,29 @@ LIB = libft/libft.a
 
 NAME = run_tests
 
-CRED=\x1b[31m
-CGREEN=\x1b[32m
-CYELLOW=\x1b[33m
-CBLUE=\x1b[34m
-CCYAN=\x1b[36m
-CDEFAULT=\x1b[39m
-CDEF=$(CDEFAULT)
+define LIB_ASCII
+ ___        __         ___  __
+/\\_ \\    __/\\ \\      /'___\\/\\ \\__
+\\//\\ \\  /\\_\\ \\ \\____/\\ \\__/\\ \\ ,_\\
+  \\ \\ \\ \\/\\ \\ \\ '__`\\ \\ ,__\\\\ \\ \\/
+   \\_\\ \\_\\ \\ \\ \\ \\L\\ \\ \\ \\_/ \\ \\ \\_
+   /\\____\\\\ \\_\\ \\_,__/\\ \\_\\   \\ \\__\\
+   \\/____/ \\/_/\\/___/  \\/_/    \\/__/
+endef
 
-CMINUS=$(CRED)[-]$(CDEF)
-CPLUS=$(CGREEN)[+]$(CDEF)
-CNORM=$(CYELLOW)[~]$(CDEF)
+CRED = \x1b[31m
+CGREEN = \x1b[32m
+CYELLOW = \x1b[33m
+CBLUE = \x1b[34m
+CCYAN = \x1b[36m
+CDEFAULT = \x1b[39m
+CDEF = $(CDEFAULT)
 
-TIME=$(CCYAN)[$$(date +"%H:%M:%S")]$(CDEF)
+CMINUS = $(CRED)[-]$(CDEF)
+CPLUS = $(CGREEN)[+]$(CDEF)
+CNORM = $(CYELLOW)[~]$(CDEF)
+
+TIME = $(CCYAN)[$$(date +"%H:%M:%S")]$(CDEF)
 
 vpath %.c tests
 
@@ -52,7 +62,9 @@ $(NAME): $(LIB) | $(OBJ)
 	@echo "$(TIME) $(CPLUS) $(CGREEN)Linking objects into $@...$(CDEF)"
 	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $|
 
+export LIB_ASCII
 $(LIB):
+	@echo "\n$(CYELLOW)$$LIB_ASCII$(CDEF)\n"
 	@echo "$(TIME) $(CNORM) $(CCYAN)Running make in $(dir $(LIB))...$(CDEF)"
 	@$(MAKE) "DEBUG=${DEBUG}" -C $(dir $(LIB))
 
