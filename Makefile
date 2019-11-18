@@ -6,7 +6,7 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/17 21:49:00 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/18 18:15:33 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,13 +60,13 @@ vpath %.c tests
 
 all: ascii $(NAME)
 
-$(NAME): $(LIB) | $(OBJ)
-	@echo "$(TIME) $(CPLUS) $(CGREEN)Linking objects into $@...$(CDEF)"
-	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $|
-
 export ASCII
 ascii:
 	@echo "\n$(CYELLOW)$$ASCII$(CDEF)\n"
+
+$(NAME): $(LIB) | $(OBJ)
+	@echo "$(TIME) $(CPLUS) $(CGREEN)Linking objects into $@...$(CDEF)"
+	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $|
 
 $(LIB):
 	@echo "$(TIME) $(CNORM) $(CCYAN)Running make in $(dir $(LIB))...$(CDEF)"
