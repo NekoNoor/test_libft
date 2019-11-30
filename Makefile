@@ -6,23 +6,18 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 12:13:23 by nschat        #+#    #+#                  #
-#    Updated: 2019/11/18 18:15:33 by nschat        ########   odam.nl          #
+#    Updated: 2019/11/30 20:26:39 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I libft
-ifeq (${DEBUG},true)
-	CFLAGS := -g -fprofile-instr-generate -fcoverage-mapping $(CFLAGS)
-endif
 LDFLAGS = -L libft -lcriterion -lft
 
-SRC = test_mem.c test_misc.c test_str.c test_part2.c
-BSRC = test_bonus.c
+SRC = test_mem.c test_misc.c test_str.c test_part2.c test_list.c
 
 ODIR = obj
 OBJ = $(addprefix $(ODIR)/,$(SRC:.c=.o))
-BOBJ = $(addprefix $(ODIR)/,$(BSRC:.c=.o))
 
 LIB = libft/libft.a
 
@@ -70,13 +65,7 @@ $(NAME): $(LIB) | $(OBJ)
 
 $(LIB):
 	@echo "$(TIME) $(CNORM) $(CCYAN)Running make in $(dir $(LIB))...$(CDEF)"
-	@$(MAKE) "DEBUG=${DEBUG}" -C $(dir $(LIB))
-
-bonus: $(LIB) | $(OBJ) $(BOBJ)
-	@echo "$(TIME) $(CNORM) $(CCYAN)Running make bonus in $(dir $(LIB))...$(CDEF)"
-	@$(MAKE) bonus "DEBUG=${DEBUG}" -C $(dir $(LIB))
-	@echo "$(TIME) $(CPLUS) $(CGREEN)Linking bonus objects into $(NAME)...$(CDEF)"
-	@$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $|
+	@$(MAKE) -C $(dir $(LIB))
 
 $(ODIR)/%.o: %.c
 	@echo "$(TIME) $(CPLUS) $(CBLUE)Compiling $< to $@...$(CDEF)"
